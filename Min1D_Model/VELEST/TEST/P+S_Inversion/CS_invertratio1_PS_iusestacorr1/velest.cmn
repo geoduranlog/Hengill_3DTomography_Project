@@ -1,0 +1,93 @@
+******* CONTROL-FILE FOR PROGRAM  V E L E S T  VERSION 4.5 (AUGUST 2017) **
+***
+*** ( all lines starting with  *  are ignored! )
+*** ( where no filename is specified, 
+***   leave the line BLANK. Do NOT delete!)
+***
+*** next line contains a title (printed on output):
+SIMULINV VELEST run for P-phase picks Swiss data
+***      
+***  olat       olon   icoordsystem      zshift   itrial ztrial    ised
+   64.02000    21.3500      0            0.000      0     0.00       0
+***
+*** neqs   nshot   rotate
+     91    0      0.0
+***
+*** isingle   iresolcalc
+       0          0
+***
+*** dmax    itopo    zmin     veladj    zadj   lowveloclay
+    1000.0     0      0.01       0.20    5.00       0
+***
+*** nsp    swtfac   vpvs       nmod
+     2      1.00    0.00        2
+***
+***   othet   xythet    zthet    vthet   stathet
+      0.01     0.01      0.01     001.0      0.10
+***      
+***  quality classes and weighting scheme of picks
+***  iqc=0, quality classes as defined in input *.cnv file
+***  iqc=1, quality classes can be redefined for each obs
+***         with iwt0,iwt1,iwt2,iwt3,iwt4,iwt5
+***  iqf=0, weighting scheme as defined by 
+***  w(nobs,i)=1.0/(2**(ipwt(j)*2))  (HYPO71, USGS code)
+***  iqf=1, using the weighting scheme
+***  w(nobs,i)=1.0/(2**(ipwt(j)))
+***  iqf=2, using personal weighting scheme
+***         with iwf0,iwf1,iwf2,iwf3,iwf4,iwf5
+***  default setting iqc=0 and iqf=0
+***
+***  iqc   iwt0   iwt1   iwt2   iwt3   iwt4   iwt5
+      0     1      1      1      1      4      4
+***  iqf   iwf0   iwf1   iwf2   iwf3   iwf4   iwf5
+      1    1.00   1.00   1.00   1.00   0.00   0.00      
+***
+*** nsinv   nshcor   nshfix     iuseelev    iusestacorr
+       1       0       0           1            1
+***
+*** iturbo    icnvout   istaout   ismpout   ihypores
+       0         1         1         0         1
+***
+*** irayout   idrvout   ialeout   idspout   irflout   irfrout   iresout
+       0         0         0         0         0         0         1
+***
+*** delmin   ittmax   invertratio
+    0.010       4          1
+***
+*** Velocity Model input file:
+Hengill_PplusSModel.mod
+***
+*** Station input file:
+CS_000.sta
+***
+*** Seismofile:
+                                                                                
+***
+*** File with region names:
+regionsnamen.dat
+***
+*** File with region coordinates:
+regionskoord.dat 
+***
+*** File #1 with topo data:
+                                                                                
+***
+*** File #2 with topo data:
+                                                                                
+***
+*** DATA INPUT files:
+***
+*** Earthquake input file:
+CS_EQfile_merge_PS_Hengil.cnv
+***
+*** File with Shot data:
+                                                                                
+***
+*** OUTPUT files:
+***
+*** Filename of all output files:
+*** e.g. t01.invratio1.it2
+*** extensions depending on file type are added automatically
+CS_invertratio1_PS_iusestacorr1
+***
+******* END OF THE CONTROL-FILE FOR PROGRAM  V E L E S T  *******

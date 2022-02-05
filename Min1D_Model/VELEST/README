@@ -1,0 +1,13 @@
+#Create alias list from WS-output:
+awk -F '|' '{if(substr($1,1,1)!="#"){vstat=substr($2,1,4);printf("%-6s = %-4s %9.4f%9.4f %6.3f %-2s  %-9s %7.3f %7.3f\n",$2,vstat,$3,$4,$5/1000.0,$1,"COSEISM",0.0,0.0)}}' StationListWS.txt > ~/lib/coseismiq_stations.alias
+#Convert to VELEST format (make sure region is set to COSEISMIQ):
+convert_station.py -s /Users/tdiehl/lib/coseismiq_stations.alias -o CS_000.sta -e VELEST
+
+SDC-Origin:
+sd_lat = 64.02
+sd_lon = -21.35
+
+#All earthquakes:
+awk '{if($17=="T"){print $19}}' ~/lib/COSEISMIQ_List.log.latest >> KP_convert_CS_20191204_P.cmn 
+
+~/programs/KPtools/KP_convert_Tomo KP_convert_CS_20191204_P.cmn
