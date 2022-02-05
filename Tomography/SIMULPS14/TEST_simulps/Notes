@@ -1,0 +1,12 @@
+				NOTES - ADN 30.03.2020
+
+Tomography inversion using SIMULPS14
+
+Coseismiq_5x5x3_d100   -> Velocity nodes have a separation (in the interest region, i.e. close to the centre of the map) of dx=dy=5km  dz=3km   run with a damping parameter d=100
+  
+FOLDERS
+->Inv_SyntheticTest:  All synthetic tests. Structure tested are in   SimulPS_presemtations\Synthetic_test_Tomo.ppt
+
+->S_waves:  Inversions for S-wave data
+
+->2ndRound: Repetition of previous tests but after revision of few parameters during the inversion. I also focused on MOD5x5x3  and MOD3x3x1.5 only.
