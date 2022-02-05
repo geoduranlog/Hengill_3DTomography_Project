@@ -1,0 +1,10 @@
+				NOTES - ADN 30.03.2020
+
+You have 2 files, the fortran code (make3DsimulMOD.f) and the  file where you write the parameters of the desired model make3DsimulMOD.cmn.  Better keep the same file always (otherwise you’d need to change it on  .f file).  
+
+1. Compile the code      gfortran -o make3DsimulMOD make3DsimulMOD.f
+
+This will output an executable file:
+
+2. Then, simply run it as  ./make3DsimulMOD
+  

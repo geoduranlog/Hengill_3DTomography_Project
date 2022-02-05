@@ -1,0 +1,36 @@
+# Simulps14 model headers:
+ 1.0 15 15 10
+ -200.0   -40.0    -15.0   -12.0    -9.0    -6.0    -3.0     0.0     3.0     6.0     9.0    12.0    15.0    40.0   200.0
+ -120.0   -25.0   -15.0   -12.0    -9.0    -6.0    -3.0    0.0    3.0     6.0     9.0    12.0    15.0    25.0   120.0
+ -10.0  -1.0   0.0     2.0      4.0    6.0    8.0   10.0    15.0     50.0
+# Name of output file:
+MOD_S_COSEISMIQ_P+S_3x3x2
+# Generate P or PS (P/PS)
+P
+# Settings for checkerboard pertubation:
+# Apply (y/n)?
+n
+# Start pertubation in first or second layer if vertical gap > 0 (1/2):
+1
+# Start with positive or negative pertubation (1/-1):
+1
+# Width of pertubation along longitude (number of nodes):
+2
+# Width of pertubation along latitude  (number of nodes):
+2
+# Horizontal Gap between pertubations  (number of nodes):
+2
+# Vertical   Gap between pertubations  (number of nodes):
+1
+# Velocity model definition:
+#         vp   pertubation (%) |  vs   pertubation (%)
+PLANE  1  1.30            10.0 | 01.00            10.0
+PLANE  2  1.60            10.0 | 01.00            10.0
+PLANE  3  1.72            10.0 | 01.00            10.0
+PLANE  4  3.40            10.0 | 01.00            10.0
+PLANE  5  3.86            10.0 | 01.00            10.0
+PLANE  6  3.98            10.0 | 01.00            10.0
+PLANE  7  4.06            10.0 | 01.00            10.0
+PLANE  8  4.06            10.0 | 01.00            10.0
+PLANE  9  4.07            10.0 | 01.00            10.0
+PLANE 10  4.07            10.0 | 01.00            10.0

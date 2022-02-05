@@ -1,0 +1,16 @@
+				NOTES - ADN 03.04.2020
+
+This code takes SimulPS output and converted in gmt format (you make an interpolation of the vmodel for that). Such code is in  /Users/alejandro/ICELAND_Project/Tomography/SIMULPS14/Tools/fortran/tomo2gmt
+However, what I did was to compile it and copy the executable to bash so you can use it from any directory. 
+
+Instructions about Compilation here
+/Users/alejandro/ICELAND_Project/Tomography/SIMULPS14/SimulPS_Instruction_Tobias.docx
+
+
+----Instruction about use:------
+Go to your Simulps14 directory (where I got the inversion results ->vmodel, example:  ~/Tomography/SIMULPS14/TEST_simulps/Coseismiq_3x3x1p5_d100/) and run it by typing
+
+  tomo2gmt 
+
+and answered all the quesitons of the program
+The new files are saved in the folder VP

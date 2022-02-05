@@ -1,0 +1,11 @@
+		NOTES Conversion from VELEST to SIMULPS  22.06.2020
+		
+Codes to convert phase and station files
+- phase_filter4tomo_Refined.py: This tools is very useful to analyse the VELEST output (filter for residuals etc etc etc check: phase_filter4tomo_Refined.py -h).
+In addition you can convert the VELEST CNV output (your minimum 1D locations) to SIMULPS format by (example):
+
+python  phase_filter4tomo_Refined.py -F CS_VMGralTrendMiddle_invertratio1_P_CNVFeb2020_2.cnv -o CS_VMGralTrendMiddle_invertratio1_P_CNVFeb2020_2.EQKS -e simulps -E
+
+
+
+OJO!! Use the previous python version =>  conda activate python2

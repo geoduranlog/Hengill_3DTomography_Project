@@ -1,0 +1,7 @@
+#PICK-STAT: 0  0.025  1.0000      2050        25
+#PICK-STAT: 1  0.050  0.5000       635       396
+#PICK-STAT: 2  0.100  0.2500       267      1143
+#PICK-STAT: 3  0.200  0.1250        51       590
+#PICK-STAT: 4  0.400  0.0625         0        58
+#PICK-STAT: 5  9.990  0.0000         0         0
+#PICK-STAT-AVERAGE-P-Err:  0.040#PICK-STAT-AVERAGE-S-Err:  0.125

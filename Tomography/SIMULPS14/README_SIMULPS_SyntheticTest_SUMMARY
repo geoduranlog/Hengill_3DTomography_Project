@@ -1,0 +1,104 @@
+#This README files is a step-by-step manual how to perform a synthetic mdel
+#Test for SIMULPS
+#
+#T. Diehl, SED-ETHZ, 2020/04/23   A Duran (Summary)
+##############################################
+SYNTHETIC TEST - BUILD AND PLOT
+
+1)Add manual anomalies to MOD_Test01, e.g. using +/- 10% anomalies. Remember, directions are flipped.
+
+#Copy synthetic test model,e.g.:
+$ cp MOD MOD_Test01
+
+#2) Then plot the syntehtc model via FORTRAN code modplot:
+
+$ modplot
+
+BEST->  create a file giving all the inputs for mod plot code : modplot.in
+And then simply run it as:    modplot < modplot.in
+
+
+#Then plot layers via GMT script:
+$ pl_tomo_HorzPlai_xyz_CHUpdate_SwissMap.csh planes2plot.txt 2 modplot
+
+
+#######################################################
+ CONVERT MODEL TO FDtime FORMAT
+
+#3) Convert Model to FDtime format (which is the format of fattomo, therefore conversion code is "modsimul2fat"):
+
+
+$ cd modsimul2fat
+
+
+#Copy synthetic model just yo different name expected by f77 code:
+$ cp MOD_Test01 MOD.synth
+
+
+#Now the tricky part: the conversion code needs a file called: "gridnodes.new" with definition of the "new" grid.
+#We take the exact header from "MOD_Test01" only for the depth we remove the numerical boundaru layers:
+#Header of the MOD_Test01/MOD.synth:
+ 1.0 43 43 13
+ -400 -200 -190 -180 -170 -160 -150 -140 -130 -120 -110 -100 -90 -80 -70 -60 -50 -40 -30 -20 -10 0.0 10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 400.0
+ -400 -200 -190 -180 -170 -160 -150 -140 -130 -120 -110 -100 -90 -80 -70 -60 -50 -40 -30 -20 -10 0.0 10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 400.0
+-7.0 -5.0 0.0 4.0 9.0 14.0 20.0 27.0 35.0 45.0 60.0 80.0 300.0
+  0  0  0
+#Content of grid-definition "gridnodes.new":
+43 43 11
+ -400 -200 -190 -180 -170 -160 -150 -140 -130 -120 -110 -100 -90 -80 -70 -60 -50 -40 -30 -20 -10 0.0 10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 400.0
+ -400 -200 -190 -180 -170 -160 -150 -140 -130 -120 -110 -100 -90 -80 -70 -60 -50 -40 -30 -20 -10 0.0 10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 400.0
+-5.0 0.0 4.0 9.0 14.0 20.0 27.0 35.0 45.0 60.0 80.0
+#
+
+#Now run the code:
+
+$ modsimul2fat_regrd
+#
+#The result is written to MOD.regrd
+#
+
+#######################################################
+4)	CALCULATE SYNTHETIC TRAVEL TIMES VIA FDtimes
+
+After successful FDtimes compilation do:
+
+$ cp MOD.regrd MOD
+
+#Now open file "MOD" and remove header-line #5 " 0 0 0" -> FDtimes otherwise shifts the model by three nodes...
+
+#Now we need three more input files:
+a) the EQKS file with original phases used for the data inversion. 
+b) the STNS file with original station coordinates. Remove the first header line (the short distnce conversion definition) 
+c) CNTL file for FDtimes - Here you have to specify all parameters for FDtime.
+#->ADN: OJO,  use proper coordinates convention.  64N1' 21W21' ->  64 01  21 21
+#
+
+#Then start FDtimes :
+$ nohup FDtimes > nohup_FDtimes.txt &
+#->ADN: I put executable on bash and run it simply as "FDtimes"
+#->ADN: I modified the code 'Fdtimes.f' to put coseismiq weighting classes. . Line 900
+
+
+#######################################################
+		ADD RANDOM NOISE TO SYNTHETIC TRAVEL TIMES
+
+#5) Now add gaussion (or other random) noise to synthetic traveltimes using code addgaussian.OSX.c  
+
+# First select type of model noiseflg (1: class dependant equal distributed noise, other methods: class dependant gausian etc)
+# then compile with $make
+
+ addgaussian -f EQKS.FD -o EQKS.FD.noise.EqWeight
+
+#->ADN: I modified the code 'addgaussian.OSX.c' to put coseismiq weighting classes. Line 52
+
+
+#######################################################
+		SIMULPS INVERSION - SYNTHETIC TEST
+#6) Now perform SIMULPS inversion with exact same input, only replace EQKS by EQKS.FD.noise.EqWeight
+
+Make tomo2gmt and plot
+
+
+###Repeat procedure for other synthetic structures etc.
+###
+###
