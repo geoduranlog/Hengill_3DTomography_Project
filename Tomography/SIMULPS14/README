@@ -1,22 +1,4 @@
-T. Diehl - 2020/03/09 - SIMULPS Repository
-
-content of repository:
-
-
-src: includes the source file of SIMULPS14 and the corresponding makefile. To compile do "make".
-Static array-dimensions and other parameters for SIMULPS are defined in: simulps14_common.inc
-Static array-dimensions and other parameters for RKP-Raytracer are defined in: rayparax_common.inc
-I use it on Linux Ubuntu, but I think it should also work on OSX. Depending on the
-size of you problem you should rum it on a machine like bigstar (not on your laptop)
-since it can take several ours#
-
-Doc: Includes the manuals (the general one + additional comments related to version 14
-(extended raytracer) - PLEASE READ BOTH DOCUMENTATIONS CAREFULLY IN THE NEXT DAYS
-
-Testcase_CH: This directory contains all input files of my current Swiss Model. However, I limited
-the phase file in size. But you can use them as "template examples" for your own input files.
-
-Tools: I have added tools to help you with preparation and analysis:
+SIMULPS Repository
 
 	python: Contains python codes to convert phase and station files
 	- phase_filter4tomo_Refined.py: This tools is very useful to analyse the VELEST output (filter for residuals etc etc etc check: phase_filter4tomo_Refined.py -h).
